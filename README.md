@@ -8,3 +8,4 @@ Then I am give the exact distance to the shop from my current location
 When the coffee shop is located
 Then I am given the weather in the exact location of the shop
 
+
