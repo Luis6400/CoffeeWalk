@@ -1,5 +1,5 @@
 function getWeather(lat, lon) {
-    const apiKey = '258095a35d3cd5a903f9827a326f5e5b';
+    const apiKey = "258095a35d3cd5a903f9827a326f5e5b";
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
 
     fetch(apiUrl)
@@ -9,12 +9,12 @@ function getWeather(lat, lon) {
         var temperature = data.main.temp;
         var description = data.weather[0].description;
 
-        document.getElementById('location').textContent = `Location: ${location}`;
-        document.getElementById('temperature').textContent = `Temperature: ${temperature}°F`;
-        document.getElementById('description').textContent = `Description: ${description}`;
+        document.getElementById("location").textContent = `Location: ${location}`;
+        document.getElementById("temperature").textContent = `Temperature: ${temperature}°F`;
+        document.getElementById("description").textContent = `Description: ${description}`;
       })
       .catch(error => {
-        console.error('Error fetching weather data:', error);
+        console.error("Can't find your weather!", error);
       });
   }
 
@@ -26,10 +26,10 @@ function getWeather(lat, lon) {
 
         getWeather(lat, lon);
       }, error => {
-        console.error('Error getting location:', error);
+        console.error("Cant retrive yuor location!", error);
       });
     } else {
-      console.error('Geolocation is not supported by this browser.');
+      console.error("Can't retrive your location!");
     }
   }
 
