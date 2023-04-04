@@ -1,0 +1,15 @@
+:root{
+    --primary: #E08C28;
+}
+
+.navbar .navbar-brand {
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+  
+  .navbar .navbar-brand > .navbar-item,
+  .navbar .navbar-brand .navbar-link {
+    display: inline-block;
+  }
+
