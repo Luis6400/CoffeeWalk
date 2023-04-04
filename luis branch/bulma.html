@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Title Page</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="./custom-bulma.css">
+        <html style = 'overflow-y:hidden'></html>
+    </head>
+    <body>
+        <nav class="navbar is-primary">
+            <div class="navbar-brand">
+                <a class="navbar-brand navbar-item">
+                    <img src="./bul-assets/coffee-cup.png" alt="coffee icon" style="max-height: 70px">
+                    <p class="is-size-6 has-text-weight-bold is-family-primary">CoffeeWalk</p>
+                </a>
+            </div>
+        </nav>
+
+        <section class="container has-text-centered">
+            <h2 class="is-size-1-desktop is-size-3-tablet is-size-4-mobile is-family-primary m-6 p-6">Where will the walk begin?</h2>
+            <div class="field">
+                <input id="staddrinput" class="input is-primary mx-6" style="max-width: 80%"type="text" placeholder="Street Address">
+            </div>
+            <button onclick="getlonlat()"id="submitmain" class="button is-primary">GO</button>
+        </section>
+        <script src="./testerrr.js"></script>
+    </body>
+
+</html>
+
