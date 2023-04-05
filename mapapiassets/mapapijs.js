@@ -4,7 +4,6 @@ var startAddress = document.getElementById('staddrinput');
 var submitAddressBtn = document.getElementById('submitmain');
 var respage = document.getElementById("resultspage");
 var searchPage = document.getElementById('searchpage');
-respage.style.display = "none";
 // ADD CODE TO SUBMIT ON ENTER
 // .addEventListener('submit', enter);
 // submitAddressBtn.addEventListener('click', enter);
@@ -19,15 +18,9 @@ function enter() {
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
-            var addressPoint = data.resourceSets[0].resources[0].point.coordinates[0];
-            var addressPoint2 = data.resourceSets[0].resources[0].point.coordinates[1];
             var addressPoint3 = data.resourceSets[0].resources[0].point.coordinates.toString();
             console.log(addressPoint3);
-            console.log(addressPoint2);
-            console.log(addressPoint);
-            getshops(addressPoint, addressPoint2);
-            searchPage.style.display= "none";
-            respage.style.display = "block";
+            getshops(addressPoint3);
         });
 };
 
@@ -37,9 +30,9 @@ function enter() {
 
 console.log("hello");
 
-function getshops(latin, lonin) {
+function getshops(latlon) {
 
-    var urladdin = latin + "," + lonin;
+    var urladdin = latlon;
 
     fetch("http://dev.virtualearth.net/REST/v1/LocalSearch/?type=CoffeeAndTea&userLocation=" + urladdin + ",5000&maxResults=5&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-")
         .then((response) => response.json())
@@ -79,6 +72,7 @@ function getshops(latin, lonin) {
     
 function getRoute() {    
 fetch("https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/Routes/Walking?waypoint.1=40.530622,-111.910037&waypoint.2=40.58739471,-111.93572998&pushpin=40.58739471,-111.93572998;59&maxSolutions=1&mapLayer=Basemap,buildings&format=jpeg&mapMetadata=0&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-")
+    .then((response)=>response.jpeg);
 }
 
 
