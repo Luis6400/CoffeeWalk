@@ -28,7 +28,7 @@
             <input onsubmit="enter()" id="staddrinput" class="input is-primary mx-6" style="max-width: 80%" type="text"
                 placeholder="Street Address">
         </div>
-        <button onclick="enter()"id="submitmain" class="button is-primary">GO</button>
+        <button onclick="enter()" id="submitmain" class="button is-primary">GO</button>
     </section>
 
     <section id="resultspage" class="container has-text-centered has-background-warning">
@@ -37,15 +37,7 @@
         </div>
         <section id="resultscards" style="width: 80%" class="container has-text-centered has-background-danger mx-6">
 
-            <section style="width: 90%" class="card my-2 px-2">
-                <h2>shopname</h2>
-                <p>address</p>
-            </section>
 
-            <section style="width: 90%" class="card my-2 px-2">
-                <h2>shopname</h2>
-                <p>address</p>
-            </section>
 
         </section>
 
@@ -62,29 +54,31 @@
 
         <section class="columns">
             <section id="shopinfocard" class="card has-background-light m-2 column">
-
-                <h2>coffeeshop info</h2>
+                <h2 id="shopnamefin"></h2>
+                <h2 id="shopaddfin"></h2>
             </section>
 
             <section id="mapcard" class=" card has-background-light m-2 column">
-                <h2>map</h2>
+                
             </section>
         </section>
 
         <section class="columns">
             <section class="column card m-2">
-                <h2>weather</h2>
+                <h2 id="location"></h2>
+                <h2 id="temperature"></h2>
+                <h2 id="description"></h2>
             </section>
         </section>
 
     </section>
 
-        
 
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <!-- <script src="./testerrr.js"></script> -->
-        <script src="../mapapiassets/mapapijs.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="./testerrr.js"></script> -->
+    <script src="../assets/coffeewalkscript1.js"></script>
 
 
 </body>
