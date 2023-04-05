@@ -1,14 +1,7 @@
-// data="";
-// var startAddress = encodeURIComponent(document.getElementById('userAddressInput').value);
 var startAddress = document.getElementById('staddrinput');
 var submitAddressBtn = document.getElementById('submitmain');
 var respage = document.getElementById("resultspage");
 var searchPage = document.getElementById('searchpage');
-// ADD CODE TO SUBMIT ON ENTER
-// .addEventListener('submit', enter);
-// submitAddressBtn.addEventListener('click', enter);
-// var addressPoint = [];
-
 
 function enter() {
     console.log(encodeURIComponent(startAddress.value));
@@ -23,12 +16,6 @@ function enter() {
             getshops(addressPoint3);
         });
 };
-
-
-
-
-
-console.log("hello");
 
 function getshops(latlon) {
 
