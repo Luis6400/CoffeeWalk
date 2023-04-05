@@ -1,6 +1,6 @@
 function getWeather(lat, lon) {
-    const apiKey = "258095a35d3cd5a903f9827a326f5e5b";
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+    var apiKey = "258095a35d3cd5a903f9827a326f5e5b";
+    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
 
     fetch(apiUrl)
       .then(response => response.json())
@@ -36,5 +36,23 @@ function getWeather(lat, lon) {
   getLocation();
 
 
+  for (var i=0; i < 5; i++){
+  fetch(“http://dev.virtualearth.net/REST/v1/LocalSearch/?type=CoffeeAndTea&userLocation=” + urladdin + “&maxResults=5&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-“)
+  .then((response) => response.json())
+  .then((data) => {
+      console.log(data);
+  var coffee1 = data.resourceSets[0].resources[0];
+      console.log(coffee1.Address.formattedAddress);
+  var coffee2 = data.resourceSets[0].resources[1];
+      console.log(coffee2.Address.formattedAddress);
+  var coffee3 = data.resourceSets[0].resources[2];
+      console.log(coffee3.Address.formattedAddress);
+  var coffee4 = data.resourceSets[0].resources[3];
+      console.log(coffee4.Address.formattedAddress);
+  var coffee5 = data.resourceSets[0].resources[4];
+      console.log(coffee5.Address.formattedAddress);
+  console.log(“hi”);
+});
+  }
 
      
