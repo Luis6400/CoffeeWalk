@@ -5,8 +5,22 @@ var srchpage = document.getElementById("searchpage");
 var respage = document.getElementById("resultspage");
 
 
-respage.style.display = "none";
 
+var cardslist = document.getElementById("resultscards");
+
+for(var i = 0; i < numofshops; i++) {
+
+var tempsec = document.createElement("section");
+var temph2 = (document.createElement("h2"));
+var tempp = document.createElement("p");
+temph2.innerHTML = shopname[i];
+tempp.innerHTML = shopaddr[i];
+tempsec.appendChild(temph2);
+tempsec.appendChild(tempp);
+respage.appendChild(tempsec);
+
+cardslist.appendChild(tempsec);
+}
 
 function getlonlat() {
     // var stadtemp = straddrinput.value;
@@ -29,9 +43,7 @@ function getlonlat() {
             console.log(lon);
 
             mainbutton.classList.remove("is-loading");
-            srchpage.style.display = "none";
-            respage.style.display = "block";
-
+            
 
         });
 
