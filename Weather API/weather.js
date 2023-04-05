@@ -36,23 +36,4 @@ function getWeather(lat, lon) {
   getLocation();
 
 
-  for (var i=0; i < 5; i++){
-  fetch(“http://dev.virtualearth.net/REST/v1/LocalSearch/?type=CoffeeAndTea&userLocation=” + urladdin + “&maxResults=5&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-“)
-  .then((response) => response.json())
-  .then((data) => {
-      console.log(data);
-  var coffee1 = data.resourceSets[0].resources[0];
-      console.log(coffee1.Address.formattedAddress);
-  var coffee2 = data.resourceSets[0].resources[1];
-      console.log(coffee2.Address.formattedAddress);
-  var coffee3 = data.resourceSets[0].resources[2];
-      console.log(coffee3.Address.formattedAddress);
-  var coffee4 = data.resourceSets[0].resources[3];
-      console.log(coffee4.Address.formattedAddress);
-  var coffee5 = data.resourceSets[0].resources[4];
-      console.log(coffee5.Address.formattedAddress);
-  console.log(“hi”);
-});
-  }
-
-     
+  
