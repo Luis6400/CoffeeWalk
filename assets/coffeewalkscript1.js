@@ -128,10 +128,19 @@ function getWeather(latweath, lonweath) {
       var location = data.name;
       var temperature = data.main.temp;
       var description = data.weather[0].description;
+      var iconCode = data.weather[0].icon;
+      var iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
 
-      document.getElementById("location").textContent = `Location: ${location}`;
-      document.getElementById("temperature").textContent = `Temperature: ${temperature}°F`;
-      document.getElementById("description").textContent = `Description: ${description}`;
+
+      document.getElementById("location").textContent = `${location}`;
+      document.getElementById("temperature").textContent = `${temperature}°F`;
+
+      var descriptionElement = document.getElementById("description");
+      descriptionElement.textContent = `${description}`;
+      
+      var iconElement = document.createElement("img");
+      iconElement.src = iconUrl;
+      descriptionElement.appendChild(iconElement);
     })
     .catch(error => {
       console.error("Can't find your weather!", error);
