@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar is-primary">
         <div class="navbar-brand">
-            <a class="navbar-brand navbar-item">
+            <a onclick="restartapp()" class="navbar-brand navbar-item">
                 <img src="./bul-assets/coffee-cup.png" alt="coffee icon" style="max-height: 70px">
                 <p class="is-size-6 has-text-weight-bold is-family-primary">CoffeeWalk</p>
             </a>
@@ -32,7 +32,25 @@
             <input onsubmit="enter()" id="staddrinput" class="input is-primary mx-6" style="max-width: 80%" type="text"
                 placeholder="Street Address">
         </div>
-        <button onclick="enter()" id="submitmain" class="button is-primary">GO</button>
+
+        <div class="columns">
+            <div class="column"></div>
+            <div class="container column">
+                <button onclick="enter()" id="submitmain" class="button is-primary">GO</button>
+            </div>
+            <div class="container column">
+                <button onclick="displayrecents()" class="is-primary button">RECENTS</button>
+            </div>
+            <div class="column"></div>
+        </div>
+
+        <div id="recents" class="container has-text-centered">
+            
+            
+
+        </div>
+
+
     </section>
 
     <section id="resultspage" class="container has-text-centered has-background-warning">

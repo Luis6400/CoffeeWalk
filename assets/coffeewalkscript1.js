@@ -9,6 +9,11 @@ var addresses;
 var shopnames;
 var coords;
 var startCoords;
+var hasrecentsshown = false;
+
+
+
+
 
 respage.setAttribute("style", "display: none;");
 finpage.setAttribute("style", "display: none;");
@@ -19,12 +24,14 @@ finpage.setAttribute("style", "display: none;");
 
 function enter() {
   var encodedAddress = encodeURIComponent(startAddress.value);
+  var inpstrinrec = startAddress.value;
+  saverecent(inpstrinrec);
   var enterfunurl = "http://dev.virtualearth.net/REST/v1/Locations/US/" + encodedAddress + "?&maxResults=5&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-";
-  
+
   fetch(enterfunurl)
     .then((response) => response.json())
     .then((data) => {
-        
+
       startCoords = data.resourceSets[0].resources[0].point.coordinates.toString();
       getshops(startCoords);
     });
@@ -71,13 +78,13 @@ function getshops(latlon) {
         cardslist.appendChild(tempsec);
       }
 
-      
+
 
 
       searchtores();
 
 
-      
+
     });
 }
 
@@ -86,13 +93,32 @@ function getshops(latlon) {
 function searchtores() {
   searchPage.setAttribute("style", "display: none;");
   respage.removeAttribute("style", "display: none;");
-  startAddress.innerHTML = "";
+  clearstrtpage();
+}
+
+function clearstrtpage() {
+  startAddress.value = "";
 }
 
 function restofin() {
   respage.setAttribute("style", "display: none;");
   finpage.removeAttribute("style", "display: none;");
+  clearrespage();
+}
+
+function clearrespage() {
   cardslist.innerHTML = "";
+}
+
+
+
+function clearfinpage() {
+ document.getElementById("shopnamefin").innerText = "";
+  document.getElementById("shopaddfin").innerText = "";
+  document.getElementById("mapcard").innerHTML = "";
+  document.getElementById("location").innerText = "";
+  document.getElementById("temperature").innerText = "";
+  document.getElementById("description").innerText = "";
 }
 
 
@@ -137,7 +163,7 @@ function getWeather(latweath, lonweath) {
 
       var descriptionElement = document.getElementById("description");
       descriptionElement.textContent = `${description}`;
-      
+
       var iconElement = document.createElement("img");
       iconElement.src = iconUrl;
       descriptionElement.appendChild(iconElement);
@@ -162,27 +188,79 @@ function getLocation() {
   }
 }
 
+function saverecent(inpstrin) {
 
-function getMap(shopco, startco) {    
-    fetch("https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/Routes/Walking?waypoint.1="+ startco +"&waypoint.2="+ shopco+"&pushpin="+shopco+";59&maxSolutions=1&mapLayer=Basemap,buildings&format=jpeg&mapMetadata=0&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-")
-    .then((response)=>response)
-    .then((data)=> {
-        console.log(data);
-        var addMap = data.url;
-        placeMap(addMap);
+  if (localStorage.getItem("recents") === null) {
+    localStorage.setItem("recents", JSON.stringify([]));
+  }
+
+  var temprecar = JSON.parse(localStorage.getItem("recents"));
+  temprecar.push(inpstrin);
+  if (temprecar.length > 5) {
+    temprecar.shift();
+  }
+  localStorage.setItem("recents", JSON.stringify(temprecar));
+
+}
+
+
+function getMap(shopco, startco) {
+  fetch("https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/Routes/Walking?waypoint.1=" + startco + "&waypoint.2=" + shopco + "&pushpin=" + shopco + ";59&maxSolutions=1&mapLayer=Basemap,buildings&format=jpeg&mapMetadata=0&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-")
+    .then((response) => response)
+    .then((data) => {
+      console.log(data);
+      var addMap = data.url;
+      placeMap(addMap);
     })
 }
 function placeMap(addMap) {
-    var mapCard = document.getElementById('mapcard');
-    var mapImg = document.createElement('img');
-    mapImg.src = addMap;
-    mapCard.appendChild(mapImg);
-    
+  var mapCard = document.getElementById('mapcard');
+  var mapImg = document.createElement('img');
+  mapImg.src = addMap;
+  mapCard.appendChild(mapImg);
+
 }
 
 
+function restartapp() {
+  
+  location.reload();
 
+}
 
+function displayrecents() {
+  var reccontainer = document.getElementById("recents");
+  if(!hasrecentsshown){
+    var rectitle = document.createElement("h2");
+    rectitle.setAttribute("class", "title is-2 m-3");
+    rectitle.textContent = "Recent Searches";
+    
+    recents.setAttribute("Class", "title");
+    reccontainer.appendChild(rectitle);
+    var recentsarr = JSON.parse(localStorage.getItem("recents"));
+    for (var i = 0; i < recentsarr.length; i++) {
+      var recentsbutcont = document.createElement("div");
+      recentsbutcont.setAttribute("class", "columns is-centered");
+      var recentsbut = document.createElement("div");
+      recentsbut.textContent = recentsarr[i];
+      recentsbut.setAttribute("class", "card is-primary m-2 is-size-4 has-text-white has-background-primary");
+      recentsbut.setAttribute("style", "width: 40%;");
+      recentsbut.setAttribute("onclick", "runrecents(this)");
+      recentsbutcont.appendChild(recentsbut);
+      reccontainer.appendChild(recentsbutcont);
+    }
+    hasrecentsshown = true;
+  }
+  else{
+    reccontainer.innerHTML = "";
+    hasrecentsshown = false;
+  }
 
+}
+
+function runrecents(recbut) {
+  startAddress.value = recbut.textContent;
+  enter();
+}
 
 
