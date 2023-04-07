@@ -8,9 +8,11 @@ var butnumtemp;
 var addresses;
 var shopnames;
 var coords;
+var startCoords;
 
 respage.setAttribute("style", "display: none;");
 finpage.setAttribute("style", "display: none;");
+
 
 
 
@@ -22,8 +24,9 @@ function enter() {
   fetch(enterfunurl)
     .then((response) => response.json())
     .then((data) => {
-      var addressPoint3 = data.resourceSets[0].resources[0].point.coordinates.toString();
-      getshops(addressPoint3);
+        
+      startCoords = data.resourceSets[0].resources[0].point.coordinates.toString();
+      getshops(startCoords);
     });
 };
 
@@ -74,7 +77,7 @@ function getshops(latlon) {
       searchtores();
 
 
-      getRoute();
+      
     });
 }
 
@@ -95,22 +98,22 @@ function restofin() {
 
 function findbutnum(rescard) {
   butnumtemp = rescard.getAttribute("data-butnum");
+  var tempcostr = coords[butnumtemp].toString();
   var templatt = coords[butnumtemp][0];
-  var templon = coords[butnumtemp][1];
+  var templonn = coords[butnumtemp][1];
   setinfocard(addresses[butnumtemp], shopnames[butnumtemp]);
-  getWeather(templatt, templon);
+  getWeather(templatt, templonn);
   restofin();
+  getMap(tempcostr, startCoords)
 }
+
 
 function setinfocard(add, shname) {
   document.getElementById("shopnamefin").textContent = shname;
   document.getElementById("shopaddfin").textContent = add;
 }
 
-function getRoute() {
-  fetch("https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/Routes/Walking?waypoint.1=40.530622,-111.910037&waypoint.2=40.58739471,-111.93572998&pushpin=40.58739471,-111.93572998;59&maxSolutions=1&mapLayer=Basemap,buildings&format=jpeg&mapMetadata=0&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-")
-    .then((response) => response);
-}
+
 
 
 // seperation cassandra up eleanor down
@@ -125,10 +128,19 @@ function getWeather(latweath, lonweath) {
       var location = data.name;
       var temperature = data.main.temp;
       var description = data.weather[0].description;
+      var iconCode = data.weather[0].icon;
+      var iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
 
-      document.getElementById("location").textContent = `Location: ${location}`;
-      document.getElementById("temperature").textContent = `Temperature: ${temperature}°F`;
-      document.getElementById("description").textContent = `Description: ${description}`;
+
+      document.getElementById("location").textContent = `${location}`;
+      document.getElementById("temperature").textContent = `${temperature}°F`;
+
+      var descriptionElement = document.getElementById("description");
+      descriptionElement.textContent = `${description}`;
+      
+      var iconElement = document.createElement("img");
+      iconElement.src = iconUrl;
+      descriptionElement.appendChild(iconElement);
     })
     .catch(error => {
       console.error("Can't find your weather!", error);
@@ -151,6 +163,22 @@ function getLocation() {
 }
 
 
+function getMap(shopco, startco) {    
+    fetch("https://dev.virtualearth.net/REST/v1/Imagery/Map/Road/Routes/Walking?waypoint.1="+ startco +"&waypoint.2="+ shopco+"&pushpin="+shopco+";59&maxSolutions=1&mapLayer=Basemap,buildings&format=jpeg&mapMetadata=0&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-")
+    .then((response)=>response)
+    .then((data)=> {
+        console.log(data);
+        var addMap = data.url;
+        placeMap(addMap);
+    })
+}
+function placeMap(addMap) {
+    var mapCard = document.getElementById('mapcard');
+    var mapImg = document.createElement('img');
+    mapImg.src = addMap;
+    mapCard.appendChild(mapImg);
+    
+}
 
 
 
