@@ -75,6 +75,7 @@ function getshops(latlon) {
 
 
       getRoute();
+      getMap();
     });
 }
 
