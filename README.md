@@ -4,18 +4,18 @@
 
 AS A pedestrian
 I WANT to find a coffee shop within walking distance of my specified location and also want to view the weather along my route
-SO THAT I can decide to walk, or not, base on the weather conidtions.
+SO THAT I can decide to walk, or not, based on the weather conditions.
 
 ## Acceptance Criteria
 GIVEN I need to know the route for a coffee shop within walking distance and I need to know the weather along the chosen route
 WHEN I open the webpage 
 THEN I am presented with a search input for my chosen starting location
-WHEN I submit a chosent starting location
-THEN I presented with up to five options for coffee shops within a 3 mile radius
+WHEN I submit a chosen starting location
+THEN I am presented with up to nine options for coffee shops within a 3 mile radius
 WHEN I select a coffee shop
 THEN I am presented with a map and route to the chosen coffee shop and the current weather on that route
 WHEN I return to the refreshed webpage
-THEN I am presented with the option to chose a new route or select the most recent saved route
+THEN I am presented with the option to choose a new route or select the most recent saved route
 
 ## Description
 
@@ -23,7 +23,7 @@ This webpage is a convenience tool that can be used by anyone searching for a co
 
 ## Usage
 
-The user will start on the homepage with a simple search input. The user will enter a starting location into the search bar and will then be routed to the results page where the user will be presented with coffee shop options: including names and addresses. The user will then chose from one of the coffee shop options. The user will be routed to the map page where they will be presented with a map and route to their chosen coffee shop. The map page will also display the current weather at the chosen coffee shop.   
+The user will start on the homepage with a simple search input. The user will enter a starting location into the search bar and will then be routed to the results page where the user will be presented with coffee shop options, including names and addresses. The user will then chose from one of the coffee shop options. The user will be routed to the map page where they will be presented with a map and route to their chosen coffee shop. The map page will also display the current weather at the chosen coffee shop.   
 
 live application:   ""
 
@@ -37,6 +37,8 @@ live application:   ""
 This webpage was built collaboratively by Eleanor Dick, Luis Villareal, and Cassandra Giddings
 We utilized BING Maps API for the coffee shop queries and data, the static map, and the route information.
 We utilized the OpenWeatherMap API to call and display current weather data.
+We utilized Bulma as our CSS framework.
+We used an icon from .... for our logo. The creator of that icon is ....
 
 ## License
 MIT License
