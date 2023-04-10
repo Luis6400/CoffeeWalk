@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <!-- <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css"> -->
+    <link rel="stylesheet" href="./sass/mystyles.css">
+    <link rel="stylesheet" href="./assets/custom-bulma.css">
+</head>
+
+<body>
+    <nav class="navbar is-primary">
+        <div class="navbar-brand">
+            <a onclick="restartapp()" class="navbar-brand navbar-item">
+                <img src="./assets/coffee-cup.png" alt="coffee icon" style="max-height: 70px">
+                <p class="is-size-6 has-text-weight-bold is-family-monospace">CoffeeWalk</p>
+            </a>
+        </div>
+    </nav>
+
+
+
+
+
+    <section id="searchpage" class="container has-text-centered">
+        <h2 class="is-size-1-desktop is-size-3-tablet is-size-4-mobile is-family-monospace title m-6 p-6">Where will the
+            walk
+            begin?</h2>
+        <div class="field">
+            <input onsubmit="enter()" id="staddrinput" class="input is-primary mx-6" style="max-width: 80%" type="text"
+                placeholder="Street Address">
+        </div>
+
+        <div class="columns">
+            <div class="column"></div>
+            <div class="container column">
+                <button onclick="enter()" id="submitmain" class="button is-primary">GO</button>
+            </div>
+            <div class="container column">
+                <button onclick="displayrecents()" class="is-primary button">RECENTS</button>
+            </div>
+            <div class="column"></div>
+        </div>
+
+        <div id="recents" class="container has-text-centered">
+
+
+
+        </div>
+
+
+    </section>
+
+    <section class="container has-text-centered">
+
+        <section id="resultspage" class="card has-text-centered has-background-primary">
+
+            <div class="columns m-2">
+                <div class="has-text-centered m-2 column">
+                    <h2 class="is-size-1-desktop is-size-3-tablet is-size-4-mobile title is-family-monospace">Results
+                    </h2>
+                </div>
+            </div>
+
+            <div class="columns">
+                <section id="resultscards" style="width: 80%"
+                    class="container column has-text-centered has-background-warning mx-6">
+
+
+
+                </section>
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <section class="container has-text-centered">
+
+        <section id="finpage" class="card m-2 has-background-primary has-text-centered">
+
+            <section class="columns is-family-primary m-4">
+                <section class="column">
+                    <h2 class="is-size-3 title is-family-monospace">Your CoffeeWalk Info</h2>
+                </section>
+
+            </section>
+
+            <section class="columns m-2 is-vcentered">
+                <section id="shopinfocard" class="card has-background-warning m-2 column">
+                    <h2 id="shopnamefin"></h2>
+                    <h2 id="shopaddfin"></h2>
+                </section>
+
+                <section id="mapcard" class="card has-background-warning m-2 column">
+
+                </section>
+            </section>
+
+            <section>
+                <section class="columns has-background-warning card m-2 is-vcentered is-centered">
+                    <div class="column">
+
+                        <h2 class="is-size-3 title is-family-monospace" id="location"></h2>
+                    </div>
+                    <div class="column">
+
+                        <h2 id="temperature"></h2>
+                    </div>
+                    <div id="icondiv" class="column">
+
+                    </div>
+                    <div class="column">
+
+                        <h2 id="description"></h2>
+                    </div>
+                </section>
+            </section>
+
+
+
+        </section>
+    </section>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="./testerrr.js"></script> -->
+    <script src="./assets/coffeewalkscript1.js"></script>
+    <!-- <script src="../mapapiassets/mapapi3.js"></script> -->
+
+
+</body>
+
+</html>
