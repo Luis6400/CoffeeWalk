@@ -21,6 +21,7 @@ finpage.setAttribute("style", "display: none;");
 
 
 
+//bug fix? https 
 
 function enter() {
   var encodedAddress = encodeURIComponent(startAddress.value);
