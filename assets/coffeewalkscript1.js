@@ -26,7 +26,7 @@ function enter() {
   var encodedAddress = encodeURIComponent(startAddress.value);
   var inpstrinrec = startAddress.value;
   saverecent(inpstrinrec);
-  var enterfunurl = "http://dev.virtualearth.net/REST/v1/Locations/US/" + encodedAddress + "?&maxResults=5&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-";
+  var enterfunurl = "https://dev.virtualearth.net/REST/v1/Locations/US/" + encodedAddress + "?&maxResults=5&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-";
 
   fetch(enterfunurl)
     .then((response) => response.json())
@@ -41,7 +41,7 @@ function getshops(latlon) {
 
   var urladdin = latlon;
 
-  fetch("http://dev.virtualearth.net/REST/v1/LocalSearch/?type=CoffeeAndTea&userLocation=" + urladdin + "&maxResults=9&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-")
+  fetch("https://dev.virtualearth.net/REST/v1/LocalSearch/?type=CoffeeAndTea&userLocation=" + urladdin + "&maxResults=9&key=AizrzYg48fADDG__bADnOBWOPofSFiBpuX2vBhjM6wV7JPPLXTj3il6kCztkuTo-")
     .then((response) => response.json())
     .then((data) => {
       addresses = [];
@@ -245,17 +245,19 @@ function displayrecents() {
     
     recents.setAttribute("Class", "title");
     reccontainer.appendChild(rectitle);
-    var recentsarr = JSON.parse(localStorage.getItem("recents"));
-    for (var i = 0; i < recentsarr.length; i++) {
-      var recentsbutcont = document.createElement("div");
-      recentsbutcont.setAttribute("class", "columns is-centered");
-      var recentsbut = document.createElement("div");
-      recentsbut.textContent = recentsarr[i];
-      recentsbut.setAttribute("class", "card is-primary m-2 is-size-4 has-text-white has-background-primary");
-      recentsbut.setAttribute("style", "width: 40%;");
-      recentsbut.setAttribute("onclick", "runrecents(this)");
-      recentsbutcont.appendChild(recentsbut);
-      reccontainer.appendChild(recentsbutcont);
+    if (localStorage.getItem("recents") === null) {
+      var recentsarr = JSON.parse(localStorage.getItem("recents"));
+      for (var i = 0; i < recentsarr.length; i++) {
+        var recentsbutcont = document.createElement("div");
+        recentsbutcont.setAttribute("class", "columns is-centered");
+        var recentsbut = document.createElement("div");
+        recentsbut.textContent = recentsarr[i];
+        recentsbut.setAttribute("class", "card is-primary m-2 is-size-4 has-text-white has-background-primary");
+        recentsbut.setAttribute("style", "width: 40%;");
+        recentsbut.setAttribute("onclick", "runrecents(this)");
+        recentsbutcont.appendChild(recentsbut);
+        reccontainer.appendChild(recentsbutcont);
+      }
     }
     hasrecentsshown = true;
   }
