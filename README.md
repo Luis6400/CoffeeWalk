@@ -26,7 +26,7 @@ This webpage is a convenience tool that can be used by anyone searching for a co
 The user will start on the homepage with a simple search input. The user will enter a starting location into the search bar and will then be routed to the results page where the user will be presented with coffee shop options, including names and addresses. The user will then chose from one of the coffee shop options. The user will be routed to the map page where they will be presented with a map and route to their chosen coffee shop. The map page will also display the current weather at the chosen coffee shop.   
 
 
-live application:   
+live application: https://luis6400.github.io/CoffeeWalk/
 
 <img width="1059" alt="Screenshot 2023-04-10 at 12 27 01 AM" src="https://user-images.githubusercontent.com/109999870/230840977-cc3f6157-9761-4836-b858-528baeea2773.png">
 
