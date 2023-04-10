@@ -246,7 +246,7 @@ function displayrecents() {
     
     recents.setAttribute("Class", "title");
     reccontainer.appendChild(rectitle);
-    if (localStorage.getItem("recents") === null) {
+    if (localStorage.getItem("recents") != null) {
       var recentsarr = JSON.parse(localStorage.getItem("recents"));
       for (var i = 0; i < recentsarr.length; i++) {
         var recentsbutcont = document.createElement("div");
