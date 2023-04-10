@@ -2,6 +2,10 @@
     --primary: #E08C28;
 }
 
+body{
+  overflow: hidden;
+}
+
 .navbar .navbar-brand {
     text-align: center;
     display: block;
